@@ -1,22 +1,38 @@
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+
 export default function ChooseUs() {
   return (
-    <div className="bg-gray-100 w-full  flex items-center justify-center">
-      <div className="bg-white shadow-md rounded-md  w-full flex">
+    <div className="bg-gray-100 w-full flex items-center justify-center">
+      <div className="container p-6 mx-auto w-full flex flex-col lg:flex-row">
         {/* Left Section - Image */}
-        <div className="w-1/2">
+        <motion.div
+          className="lg:w-1/2 w-full mb-6 lg:mb-0"
+          initial={{ opacity: 0, x: -50 }} // Start from left and transparent
+          whileInView={{ opacity: 1, x: 0 }} // Fade in and slide to original position when in view
+          viewport={{ once: true }} // Trigger animation once when it enters the viewport
+          transition={{ duration: 0.8 }}
+        >
           <img
             src="/potential.jpg" // Replace with your image path
             alt="Shipping and logistics"
-            className="h-full w-full object-cover rounded-l-md"
+            className="h-full w-full object-cover rounded-md"
           />
-        </div>
+        </motion.div>
 
         {/* Right Section - Content */}
-        <div className="w-1/2 p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        <motion.div
+          className="lg:w-1/2 w-full p-4 lg:p-8"
+          initial={{ opacity: 0, x: 50 }} // Start from right and transparent
+          whileInView={{ opacity: 1, x: 0 }} // Fade in and slide to original position when in view
+          viewport={{ once: true }} // Trigger animation once when it enters the viewport
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center lg:text-left">
             We create opportunity to reach potential
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 mb-6 text-center lg:text-left">
             Develop energy storage systems such as batteries and other
             technologies that can store excess renewable energy for use later.
             We strongly support best practice sharing across our operations
@@ -25,7 +41,13 @@ export default function ChooseUs() {
 
           {/* Features */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-3">
+            <motion.div
+              className="flex items-center space-x-3"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }} // Fade in when in view
+              viewport={{ once: true }} // Trigger animation once when it enters the viewport
+              transition={{ duration: 1, delay: 0.3 }}
+            >
               <div className="bg-yellow-400 p-3 rounded-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -51,9 +73,15 @@ export default function ChooseUs() {
               <span className="text-gray-700 font-medium">
                 Safety & Reliable Service
               </span>
-            </div>
+            </motion.div>
 
-            <div className="flex items-center space-x-3">
+            <motion.div
+              className="flex items-center space-x-3"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }} // Fade in when in view
+              viewport={{ once: true }} // Trigger animation once when it enters the viewport
+              transition={{ duration: 1, delay: 0.5 }}
+            >
               <div className="bg-yellow-400 p-3 rounded-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -73,9 +101,9 @@ export default function ChooseUs() {
               <span className="text-gray-700 font-medium">
                 Real Time Tracking System
               </span>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

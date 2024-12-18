@@ -1,6 +1,17 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 const EmailSection = () => {
+  const [messageSent, setMessageSent] = useState(false); // State to track the message sent status
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setMessageSent(true); // Set messageSent to true when form is submitted
+    setTimeout(() => {
+      setMessageSent(false); // Reset the messageSent status after 3 seconds
+    }, 3000);
+  };
+
   return (
     <section className="bg-gray-100 py-12 px-6">
       <div className="container mx-auto grid md:grid-cols-2 gap-8">
@@ -8,7 +19,7 @@ const EmailSection = () => {
         <div className="bg-gray-800 text-white p-8 rounded-lg">
           <h2 className="text-2xl font-bold mb-6">Contact us</h2>
           <h3 className="text-xl font-semibold mb-6">Write Email</h3>
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-1">
                 Your Name
@@ -62,6 +73,13 @@ const EmailSection = () => {
               Send a message
             </button>
           </form>
+
+          {/* Success Message */}
+          {messageSent && (
+            <div className="mt-4 text-center text-green-500 font-semibold">
+              Your message has been sent successfully!
+            </div>
+          )}
         </div>
 
         {/* Info Section */}

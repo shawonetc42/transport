@@ -1,6 +1,7 @@
-// pages/index.js
+"use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Blog() {
   return (
@@ -16,7 +17,22 @@ export default function Blog() {
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Blog card 1 */}
-          <div className="bg-white shadow-md rounded-lg overflow-hidden">
+          <motion.div
+            className="bg-white shadow-md rounded-lg overflow-hidden"
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotate: 3, // Slight rotation for a more dynamic effect
+            }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+              delay: 0.2, // Slight delay for smooth staggering
+            }}
+            viewport={{ once: true }}
+          >
             <div className="relative h-48 w-full">
               <Image
                 src="/be1.jpg"
@@ -39,13 +55,25 @@ export default function Blog() {
                 alteration in some form.
               </p>
             </div>
-            <div className="absolute top-4 right-4 bg-blue-500 text-white text-lg font-bold h-10 w-10 flex items-center justify-center rounded-full">
-              30
-            </div>
-          </div>
+          </motion.div>
 
-          {/* Repeat the blog card for other entries */}
-          <div className="bg-white shadow-md rounded-lg overflow-hidden">
+          {/* Blog card 2 */}
+          <motion.div
+            className="bg-white shadow-md rounded-lg overflow-hidden"
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotate: -3, // Slight rotation for variation
+            }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+              delay: 0.4,
+            }}
+            viewport={{ once: true }}
+          >
             <div className="relative h-48 w-full">
               <Image
                 src="/be2.jpeg"
@@ -68,12 +96,25 @@ export default function Blog() {
                 alteration in some form.
               </p>
             </div>
-            <div className="absolute top-4 right-4 bg-blue-500 text-white text-lg font-bold h-10 w-10 flex items-center justify-center rounded-full">
-              30
-            </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-white shadow-md rounded-lg overflow-hidden">
+          {/* Blog card 3 */}
+          <motion.div
+            className="bg-white shadow-md rounded-lg overflow-hidden"
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotate: 3, // Adding rotation for smooth movement
+            }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+              delay: 0.6,
+            }}
+            viewport={{ once: true }}
+          >
             <div className="relative h-48 w-full">
               <Image
                 src="/be3.jpg"
@@ -96,10 +137,7 @@ export default function Blog() {
                 alteration in some form.
               </p>
             </div>
-            <div className="absolute top-4 right-4 bg-blue-500 text-white text-lg font-bold h-10 w-10 flex items-center justify-center rounded-full">
-              30
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

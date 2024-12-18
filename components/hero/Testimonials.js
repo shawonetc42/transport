@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function Testimonials() {
   const testimonials = [
     {
@@ -30,7 +34,12 @@ export default function Testimonials() {
     <div className="bg-gray-100 py-16">
       <div className="container mx-auto px-4">
         {/* Header Section */}
-        <div className="mb-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-12 text-center"
+        >
           <h2 className="text-sm font-semibold text-gray-600 uppercase">
             Our Feedbacks
           </h2>
@@ -41,13 +50,16 @@ export default function Testimonials() {
             Lorem ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
             sollicitudin, lorem is simply free text quis bibendum.
           </p>
-        </div>
+        </motion.div>
 
         {/* Testimonials Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 * index }}
               className="bg-white shadow-md rounded-lg p-6 text-center"
             >
               {/* Star Ratings */}
@@ -82,7 +94,7 @@ export default function Testimonials() {
                   <p className="text-sm text-gray-500">{testimonial.role}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

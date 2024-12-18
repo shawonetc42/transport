@@ -1,10 +1,12 @@
-// components/Steps.js
+"use client";
+import { motion } from "framer-motion";
+
 export default function Steps() {
   return (
     <div className="bg-gray-100 py-16">
       <div className="container mx-auto text-center">
         <h2 className="text-xl font-semibold text-gray-600 uppercase">
-          How it work
+          How it works
         </h2>
         <h1 className="text-3xl font-bold text-gray-800 mt-2">
           Get your shipment with us{" "}
@@ -37,13 +39,19 @@ export default function Steps() {
 
 function StepCard({ number, title, description, icon }) {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-8 text-center">
+    <motion.div
+      className="bg-white shadow-lg rounded-lg p-8 text-center"
+      whileHover={{ scale: 1.05 }} // Scale up when hovered
+      initial={{ opacity: 0 }} // Initial opacity
+      animate={{ opacity: 1 }} // Fade in when in view
+      transition={{ duration: 0.5 }} // Transition duration
+    >
       <div className="flex justify-center items-center w-16 h-16 mx-auto rounded-full bg-blue-100">
         <img src={icon} alt={title} className="w-8 h-8" />
       </div>
       <h3 className="text-2xl font-bold text-gray-800 mt-4">{number}</h3>
       <h4 className="text-lg font-semibold text-gray-700 mt-2">{title}</h4>
       <p className="text-gray-500 mt-2">{description}</p>
-    </div>
+    </motion.div>
   );
 }

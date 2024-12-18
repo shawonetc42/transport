@@ -1,8 +1,17 @@
-// pages/index.js
-
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Footer() {
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = () => {
+    // Simulate newsletter subscription
+    setMessage("Newsletter successfully subscribed!");
+    // Clear the message after 3 seconds
+    setTimeout(() => setMessage(""), 3000);
+  };
+
   return (
     <div className="bg-blue-50 py-16">
       <div className="w-full mx-auto px-4">
@@ -45,13 +54,43 @@ export default function Footer() {
             {/* Gallery */}
             <div>
               <h3 className="text-xl font-bold text-white mb-4">Gallery</h3>
-              <div className="grid grid-cols-3 gap-2">
-                <div className="h-16 w-16 bg-gray-600"></div>
-                <div className="h-16 w-16 bg-gray-600"></div>
-                <div className="h-16 w-16 bg-gray-600"></div>
-                <div className="h-16 w-16 bg-gray-600"></div>
-                <div className="h-16 w-16 bg-gray-600"></div>
-                <div className="h-16 w-16 bg-gray-600"></div>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="h-16 w-16 bg-gray-600">
+                  <Image
+                    src="/cm1.jpg"
+                    alt="cm1"
+                    width={500}
+                    height={500}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="h-16 w-16 bg-gray-600">
+                  <Image
+                    src="/cm2.jpg"
+                    alt="cm1"
+                    width={500}
+                    height={500}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="h-16 w-16 bg-gray-600">
+                  <Image
+                    src="/cm1.jpg"
+                    alt="cm1"
+                    width={500}
+                    height={500}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="h-16 w-16 bg-gray-600">
+                  <Image
+                    src="/cm2.jpg"
+                    alt="cm1"
+                    width={500}
+                    height={500}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             </div>
 
@@ -65,10 +104,18 @@ export default function Footer() {
                   placeholder="Email Address"
                   className="p-2 rounded-l bg-gray-800 text-gray-300 focus:outline-none"
                 />
-                <button className="p-2 bg-yellow-500 text-white rounded-r">
+                <button
+                  onClick={handleSubscribe}
+                  className="p-2 bg-yellow-500 text-white rounded-r"
+                >
                   →
                 </button>
               </div>
+              {message && (
+                <div className="mt-4 text-green-400 font-semibold">
+                  {message}
+                </div>
+              )}
               <div className="flex space-x-4 mt-4">
                 <span className="h-8 w-8 bg-gray-800 rounded-full flex items-center justify-center">
                   F
